@@ -48,7 +48,7 @@ then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
     brew tap homebrew/bundle
-    brew bundle
+    brew bundle --file=~/dotfiles/mac/Brewfile
 fi
 
 mkdir $HOME/code

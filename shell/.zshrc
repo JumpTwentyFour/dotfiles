@@ -17,7 +17,7 @@ plugins=(git laravel5 composer osx)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/bin:/usr/local/bin:/$HOME/.composer/vendor/bin:$HOME/dotfiles/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin/brew:/$HOME/.composer/vendor/bin:$HOME/dotfiles/bin:$PATH
 #set numeric keys
 # 0 . Enter
 bindkey -s "^[Op" "0"

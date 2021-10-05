@@ -1,0 +1,71 @@
+# PHP
+alias pest="./vendor/bin/pest"
+alias phpunit="./vendor/bin/phpunit"
+alias c="composer"
+alias p="pest"
+
+# JavaScript
+alias jest="./node_modules/.bin/jest"
+
+# Git
+alias g="git"
+alias nah='git reset --hard;git clean -df'
+
+# Mac
+alias o="open ."
+alias hostfile="sudo vim /etc/hosts"
+alias sshconfig="vi ~/.ssh/config"
+alias copykey='command cat ~/.ssh/id_rsa.public | pbcopy'
+alias reloadshell="source $HOME/.zshrc"
+alias sites="cd $HOME/code/sites"
+alias github="cd $HOME/code/github"
+
+# List all files colorized in long format
+alias l="ls -laF"
+
+# PhpStorm
+alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
+
+# Laravel
+alias a="php artisan"
+alias d="php artisan dusk"
+alias fresh="php artisan migrate:fresh --seed"
+alias seed="php artisan db:seed"
+alias larastan="./vendor/bin/phpstan analyse"
+alias sail='./vendor/bin/sail'
+
+# Redis
+alias flush-redis="redis-cli FLUSHALL"
+
+# VSCode
+alias code='open -a "/Applications/Visual Studio Code.app" "`pwd`"'
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# IP addresses
+alias ip="curl https://diagnostic.opendns.com/myip ; echo"
+alias localip="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Flush Directory Service cache
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
+# Lock the screen
+alias afk="osascript -e 'tell application \"System Events\" to keystroke \"q\" using {command down,control down}'"
+
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Scape webpage
+alias scrape="scrapeUrl"
+
+# Restart touch bar
+alias touchbar="killall ControlStrip"
+
+# Random
+alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"

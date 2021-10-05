@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "Lets do this."
+echo -e "------------------\n"
+sudo -v
+
+echo -e "Firstly, make sure google drive is running if you want to set up mackup."
+
+echo "What do you want your computer hostname to be?"
+read -p "Answer: " reply
+hostnamectl set-hostname $reply
+
+
+echo -e "Set up terminal\n"
+source ./setup-terminal
+
+echo -e "Set up development environment\n"
+source ./setup-dev

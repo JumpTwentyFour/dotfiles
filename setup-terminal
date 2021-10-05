@@ -1,0 +1,90 @@
+#!/bin/bash
+
+## Hushlogin
+echo "Add a .hushlogin to hide "last login" when starting a new terminal session? (y/n)"
+read -p "Answer: " reply
+
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Adding .hushlogin file\n"
+    touch $HOME/.hushlogin
+fi
+
+
+## ZSH
+echo -e "Install oh-my-zsh? (y/n)"
+read -p "Answer: " reply
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Installing oh-my-zsh"
+    echo -e "-----------------\n"
+    rm -rf $HOME/.oh-my-zsh
+    curl -L https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+fi
+
+## Starship
+echo -e "Install starship? (y/n)"
+read -p "Answer: " reply
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Installing starship"
+    echo -e "-----------------\n"
+    curl -fsSL https://starship.rs/install.sh | bash
+    mkdir -p $HOME/.config
+    rm -rf $HOME/.config/startship.toml
+    ln -s $HOME/.dotfiles/shell/.starship.toml $HOME/.config/startship.toml
+fi
+
+
+# gitignore
+echo -e "Adding a global .gitignore\n"
+ln -s $HOME/.dotfiles/shell/.global-gitignore $HOME/.global-gitignore
+git config --global core.excludesfile $HOME/.global-gitignore
+
+
+# ZSH preferences
+rm $HOME/.zshrc
+ln -s $HOME/.dotfiles/shell/.zshrc $HOME/.zshrc
+
+
+# Vim preferences
+echo -e "Do you want to set up vim? (y/n)"
+read -p "Answer: " reply
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Setting up vim"
+    echo -e "-----------------\n"
+    rm $HOME/.vimrc
+    ln -s $HOME/.dotfiles/shell/.vimrc $HOME/.vimrc
+    rm $HOME/.vim
+    ln -s $HOME/.dotfiles/shell/.vim $HOME/.vim
+fi
+
+
+# Mackup
+echo -e "Do you want to set up mackup? (y/n)"
+read -p "Answer: " reply
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Setting up mackup"
+    echo -e "-----------------\n"
+    ln -s $HOME/.dotfiles/mac/.mackup.cfg $HOME/.mackup.cfg
+fi
+
+
+# SSH
+
+echo -e "Do you want to set up SSH? (y/n)"
+read -p "Answer: " reply
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Setting up SSH"
+    echo -e "-----------------\n"
+    ssh-keygen -t rsa
+    ln -s ${HOME}/.dotfiles/mac/ssh/config ${HOME}/.ssh/config
+    ls -s ${HOME}/.dotfiles/mac/ssh/conf.d ${HOME}/.ssh/conf.d
+fi
+
+# Activate z
+cd ${HOME}/.dotfiles/shell
+chmod +x ${HOME}/.dotfiles/z.sh

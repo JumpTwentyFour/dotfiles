@@ -1,0 +1,59 @@
+#!/bin/bash
+
+## NPM
+echo -e "Set up npm? (y/n)"
+read -p "Answer: " reply
+
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Setting up npm\n"
+    mkdir "${HOME}/.npm-packages"
+    npm config set prefix "${HOME}/.npm-packages"
+fi
+
+
+## composer
+echo -e "Set up composer? (y/n)"
+read -p "Answer: " reply
+
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Setting up composer\n"
+    EXPECTED_COMPOSER_CHECKSUM="$(curl https://composer.github.io/installer.sig)"
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    ACTUAL_COMPOSER_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+    if [ "$EXPECTED_COMPOSER_CHECKSUM" != "$ACTUAL_COMPOSER_CHECKSUM" ]
+    then
+        >&2 echo 'ERROR: Invalid installer checksum'
+        rm composer-setup.php
+        exit 1
+    fi
+
+    php composer-setup.php
+    rm composer-setup.php
+    mv composer.phar /usr/local/bin/composer
+fi
+
+
+# Homebrew
+echo -e "Set up homebrew? (y/n)"
+read -p "Answer: " reply
+
+if [[ $reply =~ ^[Yy]$ ]]
+then
+    echo -e "Setting up homebrew\n"
+    echo install homebrew
+    sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+    brew tap homebrew/bundle
+    brew bundle
+fi
+
+mkdir $HOME/code
+mkdir $HOME/code/sites
+mkdir $HOME/code/github/JumpTwentyFour
+
+echo -e "All done\n"
+echo "Set some sensible os x defaults by running: $HOME/.dotfiles/macos/set-defaults.sh"

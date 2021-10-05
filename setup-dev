@@ -56,4 +56,4 @@ mkdir $HOME/code/sites
 mkdir $HOME/code/github/JumpTwentyFour
 
 echo -e "All done\n"
-echo "Set some sensible os x defaults by running: $HOME/dotfiles/macos/set-defaults.sh"
+echo "Set some sensible os x defaults by running: $HOME/dotfiles/mac/set-defaults.sh"

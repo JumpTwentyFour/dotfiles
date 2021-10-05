@@ -12,7 +12,7 @@ hostnamectl set-hostname $reply
 
 
 echo -e "Set up terminal\n"
-source ./setup-terminal
+source $HOME/dotfiles/setup-terminal
 
 echo -e "Set up development environment\n"
-source ./setup-dev
+source $HOME/dotfiles/setup-dev

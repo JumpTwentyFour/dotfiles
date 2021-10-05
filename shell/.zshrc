@@ -47,9 +47,6 @@ for file in ~/dotfiles/shell/.{exports,aliases,functions}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 
-# Alias hub to git
-eval "$(hub alias -s)"
-
 
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 

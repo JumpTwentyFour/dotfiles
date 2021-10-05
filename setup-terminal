@@ -85,6 +85,4 @@ then
     ls -s ${HOME}/dotfiles/mac/ssh/conf.d ${HOME}/.ssh/conf.d
 fi
 
-# Activate z
-cd ${HOME}/dotfiles/shell
 chmod +x ${HOME}/dotfiles/shell/z.sh

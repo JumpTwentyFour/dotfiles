@@ -53,6 +53,7 @@ fi
 
 mkdir $HOME/code
 mkdir $HOME/code/sites
+mkdir $HOME/code/github/
 mkdir $HOME/code/github/JumpTwentyFour
 
 echo -e "All done\n"

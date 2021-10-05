@@ -17,7 +17,7 @@ plugins=(git laravel5 composer osx)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/bin:/usr/local/bin:/$HOME/.composer/vendor/bin:$HOME/.dotfiles/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/$HOME/.composer/vendor/bin:$HOME/dotfiles/bin:$PATH
 #set numeric keys
 # 0 . Enter
 bindkey -s "^[Op" "0"
@@ -42,8 +42,8 @@ bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
 
 # Load the shell dotfiles, and then some:
-# * ~/.dotfiles-custom can be used for other settings you don’t want to commit.
-for file in ~/.dotfiles/shell/.{exports,aliases,functions}; do
+# * ~/dotfiles-custom can be used for other settings you don’t want to commit.
+for file in ~/dotfiles/shell/.{exports,aliases,functions}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 

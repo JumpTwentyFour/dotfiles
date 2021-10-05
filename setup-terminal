@@ -87,4 +87,4 @@ fi
 
 # Activate z
 cd ${HOME}/dotfiles/shell
-chmod +x ${HOME}/dotfiles/z.sh
+chmod +x ${HOME}/dotfiles/shell/z.sh
